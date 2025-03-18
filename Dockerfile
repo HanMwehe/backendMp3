@@ -1,7 +1,11 @@
-FROM node:18
+FROM node:23.9.0
 
-# Install yt-dlp + ffmpeg
+# Fix GPG error + Install system deps
 RUN apt-get update && \
+    apt-get install -y --no-install-recommends gnupg ca-certificates && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean && \
+    apt-get update && \
     apt-get install -y python3-pip ffmpeg && \
     pip3 install yt-dlp
 
