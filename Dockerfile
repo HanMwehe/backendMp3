@@ -1,11 +1,10 @@
-FROM node:18
+FROM node:18-alpine
 
-# Install yt-dlp
-RUN apt-get update && apt-get install -y yt-dlp
-
-# Copy project & install deps
 WORKDIR /app
-COPY . .
-RUN nodemon
 
-CMD ["node", "index.js"]
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+CMD ["npx", "nodemon", "index.js"]
