@@ -6,6 +6,6 @@ RUN apt-get update && apt-get install -y yt-dlp
 # Copy project & install deps
 WORKDIR /app
 COPY . .
-RUN npm install
+RUN nodemon
 
 CMD ["node", "index.js"]
