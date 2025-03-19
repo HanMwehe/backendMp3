@@ -7,5 +7,9 @@
 		"fs": "0.0.1-security",
 		"path": "^0.12.7",
 		"yt-dlp-exec": "^1.0.2"
-	}
+	},
+	"scripts": {
+  "start": "nodemon index.js"
+}
+
 }
