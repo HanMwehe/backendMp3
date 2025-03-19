@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install -g pnpm nodemon
 
 # Install dependencies menggunakan pnpm dengan --no-frozen-lockfile
-RUN pnpm install
+RUN pnpm i --no-frozen-lockfile
 
 # Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
