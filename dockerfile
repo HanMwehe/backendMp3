@@ -1,5 +1,5 @@
 # Gunakan image dasar Node.js dengan versi yang sesuai
-FROM node:20
+FROM node:23.9.0
 
 # Set direktori kerja di dalam container
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install -g pnpm nodemon
 
 # Install dependencies menggunakan pnpm dengan --no-frozen-lockfile
-RUN pnpm i --no-frozen-lockfile
+RUN pnpm i 
 
 # Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
