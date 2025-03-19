@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install PNPM dan nodemon terlebih dahulu
 RUN npm install -g pnpm nodemon
 
-# Install dependencies menggunakan pnpm dengan --frozen-lockfile untuk memastikan konsistensi
-RUN pnpm store prune && pnpm i --no-frozen-lockfile
+# Install dependencies menggunakan pnpm dengan --no-frozen-lockfile
+RUN pnpm i --no-frozen-lockfile
 
 # Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
