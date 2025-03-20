@@ -1,23 +1,13 @@
-# Gunakan image dasar Node.js dengan versi yang sesuai
-FROM node:23.9.0
+FROM node:20-alpine
 
-# Set direktori kerja di dalam container
 WORKDIR /app
 
-# Menyalin package.json dan pnpm-lock.yaml terlebih dahulu untuk mengoptimalkan cache layer
-COPY package*.json ./
+RUN apk add --no-cache python3 make g++
 
-# Install PNPM dan nodemon terlebih dahulu
-RUN npm install -g pnpm nodemon
+COPY package.json .
 
-# Install dependencies menggunakan pnpm dengan --no-frozen-lockfile
-RUN pnpm i 
+RUN npm install
 
-# Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
 
-# Expose port yang akan digunakan aplikasi
-EXPOSE 3000
-
-# Perintah untuk menjalankan aplikasi menggunakan nodemon
-CMD ["nodemon", "index.js"]
+CMD ["npm", "start"]
